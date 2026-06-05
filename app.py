@@ -9,6 +9,7 @@ API_KEY = "9c133adc04bde5e8249b9dd2554e9bf2"
 def home():
 
     weather = None
+    error = None
 
     if request.method == "POST":
 
@@ -27,12 +28,16 @@ def home():
             "temp": data["main"]["temp"],
             "description": data["weather"][0]["description"],
             "humidity": data["main"]["humidity"],
-            "wind": data["wind"]["speed"]
+            "wind": data["wind"]["speed"],
+            "icon": data["weather"][0]["icon"]
         }
+        else:
+            error = {"error": "City not found"}
 
     return render_template(
         "index.html",
-        weather=weather
+        weather=weather,
+        error=error
     )
 
 if __name__ == "__main__":
