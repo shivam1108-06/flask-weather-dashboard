@@ -10,28 +10,29 @@
     <style>
 
         body{
-            background:#f4f6f9;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            min-height: 100vh;
         }
 
         .hero{
-            background:linear-gradient(135deg,#0d6efd,#6610f2);
-            color:white;
-            padding:50px;
-            border-radius:20px;
-            text-align:center;
-            margin-top:30px;
-            margin-bottom:30px;
+            background: linear-gradient(135deg,#0d6efd,#6610f2);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
         .weather-card{
-            border:none;
-            border-radius:20px;
-            box-shadow:0 0 25px rgba(0,0,0,0.15);
-            transition:0.3s;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.15);
+            transition: 0.3s;
         }
 
         .weather-card:hover{
-            transform:translateY(-5px);
+            transform: translateY(-5px);
         }
 
     </style>
@@ -39,118 +40,167 @@
 </head>
 <body>
 
-<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
 
-    <div class="hero">
+        <div class="container">
 
-        <h1>🌦 Weather Dashboard</h1>
+            <a class="navbar-brand fw-bold" href="/">
+                🌦 Weather Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+    <div class="container">
+
+        <div class="hero">
+
+            <h1>🌦 Weather Dashboard</h1>
+
+            <p>
+                Check Weather of Any City
+            </p>
+
+        </div>
+
+        <div class="text-center mb-4">
+
+            <h5>
+                📅 Current Date & Time
+            </h5>
+
+            <p id="datetime"></p>
+
+        </div>
+
+        <div class="card weather-card p-4">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-9">
+
+                        <input
+                            type="text"
+                            name="city"
+                            class="form-control"
+                            placeholder="Enter City Name"
+                            required>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100">
+
+                            Search
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        {% if error %}
+
+        <div class="alert alert-danger mt-4">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+        {% if weather %}
+
+        <div class="card weather-card mt-4 p-4">
+
+            <h2 class="text-center">
+                📍 {{ weather.city }}
+            </h2>
+
+            <div class="text-center">
+
+                <img
+                    src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png"
+                    alt="Weather Icon">
+
+            </div>
+
+            <hr>
+
+            <div class="row text-center">
+
+                <div class="col-md-4">
+
+                    <h4>🌡 Temperature</h4>
+
+                    <h2>{{ weather.temp }} °C</h2>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h4>💧 Humidity</h4>
+
+                    <h2>{{ weather.humidity }}%</h2>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h4>🌬 Wind Speed</h4>
+
+                    <h2>{{ weather.wind }} m/s</h2>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h4 class="text-center">
+                ☁ {{ weather.description }}
+            </h4>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <footer class="text-center mt-5 mb-3 text-muted">
+
+        <hr>
 
         <p>
-            Check Weather of Any City
+            Created By Shivam Kotak 🚀
         </p>
 
-    </div>
+    </footer>
 
-    <div class="card weather-card p-4">
+    <script>
 
-        <form method="POST">
+        function updateDateTime(){
 
-            <div class="row">
+            const now = new Date();
 
-                <div class="col-md-9">
+            document.getElementById("datetime").innerHTML =
+                now.toLocaleString();
 
-                    <input
-                        type="text"
-                        name="city"
-                        class="form-control"
-                        placeholder="Enter City Name"
-                        required>
+        }
 
-                </div>
+        updateDateTime();
 
-                <div class="col-md-3">
+        setInterval(updateDateTime, 1000);
 
-                    <button
-                        type="submit"
-                        class="btn btn-primary w-100">
-
-                        Search
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </form>
-
-    </div>
-
-    {% if error %}
-
-    <div class="alert alert-danger mt-4">
-        {{ error }}
-    </div>
-
-    {% endif %}
-
-    {% if weather %}
-
-    <div class="card weather-card mt-4 p-4">
-
-        <h2 class="text-center">
-            📍 {{ weather.city }}
-        </h2>
-
-        <div class="text-center">
-
-            <img
-                src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png"
-                alt="Weather Icon">
-
-        </div>
-
-        <hr>
-
-        <div class="row text-center">
-
-            <div class="col-md-4">
-
-                <h4>🌡 Temperature</h4>
-
-                <h2>{{ weather.temp }} °C</h2>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <h4>💧 Humidity</h4>
-
-                <h2>{{ weather.humidity }}%</h2>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <h4>🌬 Wind Speed</h4>
-
-                <h2>{{ weather.wind }} m/s</h2>
-
-            </div>
-
-        </div>
-
-        <hr>
-
-        <h4 class="text-center">
-            ☁ {{ weather.description }}
-        </h4>
-
-    </div>
-
-    {% endif %}
-
-</div>
+    </script>
 
 </body>
 </html>
