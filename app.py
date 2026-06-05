@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = "YOUR_API_KEY"
+API_KEY = "9c133adc04bde5e8249b9dd2554e9bf2"
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -23,10 +23,12 @@ def home():
         if response.status_code == 200:
 
             weather = {
-                "city": data["name"],
-                "temp": data["main"]["temp"],
-                "description": data["weather"][0]["description"]
-            }
+            "city": data["name"],
+            "temp": data["main"]["temp"],
+            "description": data["weather"][0]["description"],
+            "humidity": data["main"]["humidity"],
+            "wind": data["wind"]["speed"]
+        }
 
     return render_template(
         "index.html",
