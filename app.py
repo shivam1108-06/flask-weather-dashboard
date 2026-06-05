@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 API_KEY = "9c133adc04bde5e8249b9dd2554e9bf2"
 
+search_history = []
+
 @app.route("/", methods=["GET", "POST"])
 def home():
 
@@ -39,14 +41,21 @@ def home():
                     data["sys"]["sunset"]
                 ).strftime("%I:%M %p")
             }
-             
+
+            if city not in search_history:
+                search_history.insert(0, city)
+
+            if len(search_history) > 5:
+                search_history.pop()
+
         else:
-            error = {"error": "City not found"}
+            error = "City not found!"
 
     return render_template(
         "index.html",
         weather=weather,
-        error=error
+        error=error,
+        history=search_history
     )
 
 if __name__ == "__main__":

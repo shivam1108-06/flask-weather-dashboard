@@ -107,6 +107,29 @@
 
         </div>
 
+        {% if history %}
+
+<div class="card weather-card mt-4 p-4">
+
+    <h3 class="mb-3">
+        🕒 Recent Searches
+    </h3>
+
+    <ul class="list-group">
+
+        {% for city in history %}
+
+        <li class="list-group-item">
+            {{ city }}
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endif %}
         {% if error %}
 
         <div class="alert alert-danger mt-4">
@@ -232,3 +255,4 @@
 
 </body>
 </html>
+
