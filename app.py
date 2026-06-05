@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -24,13 +25,21 @@ def home():
         if response.status_code == 200:
 
             weather = {
-            "city": data["name"],
-            "temp": data["main"]["temp"],
-            "description": data["weather"][0]["description"],
-            "humidity": data["main"]["humidity"],
-            "wind": data["wind"]["speed"],
-            "icon": data["weather"][0]["icon"]
-        }
+                "city": data["name"],
+                "temp": data["main"]["temp"],
+                "feels_like": data["main"]["feels_like"],
+                "description": data["weather"][0]["description"],
+                "humidity": data["main"]["humidity"],
+                "wind": data["wind"]["speed"],
+                "icon": data["weather"][0]["icon"],
+                "sunrise": datetime.fromtimestamp(
+                    data["sys"]["sunrise"]
+                ).strftime("%I:%M %p"),
+                "sunset": datetime.fromtimestamp(
+                    data["sys"]["sunset"]
+                ).strftime("%I:%M %p")
+            }
+             
         else:
             error = {"error": "City not found"}
 

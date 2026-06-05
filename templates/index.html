@@ -66,9 +66,7 @@
 
         <div class="text-center mb-4">
 
-            <h5>
-                📅 Current Date & Time
-            </h5>
+            <h5>📅 Current Date & Time</h5>
 
             <p id="datetime"></p>
 
@@ -158,6 +156,36 @@
                     <h4>🌬 Wind Speed</h4>
 
                     <h2>{{ weather.wind }} m/s</h2>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row text-center">
+
+                <div class="col-md-4">
+
+                    <h4>🌡 Feels Like</h4>
+
+                    <h2>{{ weather.feels_like }} °C</h2>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h4>🌅 Sunrise</h4>
+
+                    <h2>{{ weather.sunrise }}</h2>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h4>🌇 Sunset</h4>
+
+                    <h2>{{ weather.sunset }}</h2>
 
                 </div>
 
