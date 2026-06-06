@@ -39,7 +39,12 @@ def home():
                 ).strftime("%I:%M %p"),
                 "sunset": datetime.fromtimestamp(
                     data["sys"]["sunset"]
-                ).strftime("%I:%M %p")
+                ).strftime("%I:%M %p"),
+                "temp_class": (
+                    "hot" if data["main"]["temp"] >= 30
+                    else "warm" if data["main"]["temp"] >= 20
+                    else "cold"
+                )
             }
 
             if city not in search_history:
