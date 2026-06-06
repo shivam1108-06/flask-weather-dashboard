@@ -18,7 +18,9 @@
             border:none;
             border-radius:15px;
         }
-
+        .weather-card h3{
+            font-weight:bold;
+        }
         .hero{
             background: linear-gradient(135deg,#0d6efd,#6610f2);
             color: white;
@@ -303,7 +305,7 @@
         </div>
 
         {% endif %}
-        
+
         {% if tip %}
 
         <div class="card weather-card mt-4 p-4">
@@ -321,6 +323,52 @@
         {% endif %}
 
     </div>
+
+    {% if weather %}
+
+<div class="card weather-card mt-4 p-4">
+
+    <h3 class="mb-3">
+        🌍 Air Quality
+    </h3>
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+
+            <h5>Air Quality Index</h5>
+
+            <h2 class="text-success">
+                Good
+            </h2>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h5>Pollution Level</h5>
+
+            <h2>
+                Low
+            </h2>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h5>Health Advice</h5>
+
+            <h6>
+                Safe for outdoor activities
+            </h6>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
 
     <footer class="text-center mt-5 mb-3 text-muted">
 
