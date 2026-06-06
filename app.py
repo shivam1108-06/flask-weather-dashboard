@@ -13,6 +13,7 @@ def home():
 
     weather = None
     error = None
+    tip = None
 
     if request.method == "POST":
 
@@ -52,6 +53,15 @@ def home():
                 )
             }
 
+            if data["main"]["temp"] >= 35:
+                tip = "🔥 Stay hydrated and avoid direct sunlight."
+
+            elif data["main"]["temp"] >= 25:
+                tip = "🌤 Great weather for outdoor activities."
+
+            else:
+                tip = "🧥 Weather is cool. Consider wearing warm clothes."
+
             if city not in search_history:
                 search_history.insert(0, city)
 
@@ -65,7 +75,8 @@ def home():
         "index.html",
         weather=weather,
         error=error,
-        history=search_history
+        history=search_history,
+        tip = tip
     )
 
 if __name__ == "__main__":
