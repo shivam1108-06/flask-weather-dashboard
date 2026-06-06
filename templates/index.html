@@ -89,7 +89,9 @@
         h2{
             font-size:1.5rem;
         }
-
+        .progress{
+            border-radius:15px;
+        }
     }
     </style>
 
@@ -435,6 +437,44 @@
             <h5>Fri</h5>
             <h2>☀️</h2>
             <p>33°C</p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+{% if weather %}
+
+<div class="card weather-card mt-4 p-4">
+
+    <h3 class="mb-4">
+        📊 Weather Trends
+    </h3>
+
+    <div class="progress mb-3" style="height:30px;">
+
+        <div class="progress-bar bg-danger"
+             style="width:70%;">
+            Temperature
+        </div>
+
+    </div>
+
+    <div class="progress mb-3" style="height:30px;">
+
+        <div class="progress-bar bg-info"
+             style="width:{{ weather.humidity }}%;">
+            Humidity
+        </div>
+
+    </div>
+
+    <div class="progress" style="height:30px;">
+
+        <div class="progress-bar bg-success"
+             style="width:50%;">
+            Wind
         </div>
 
     </div>
