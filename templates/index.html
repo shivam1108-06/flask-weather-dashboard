@@ -14,6 +14,11 @@
             min-height: 100vh;
         }
 
+        .card{
+            border:none;
+            border-radius:15px;
+        }
+        
         .hero{
             background: linear-gradient(135deg,#0d6efd,#6610f2);
             color: white;
@@ -117,6 +122,49 @@
             </form>
 
         </div>
+        {% if weather %}
+
+<div class="row mt-4">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card text-center shadow p-3">
+
+            <h5>🌡 Temperature</h5>
+
+            <h3>{{ weather.temp }} °C</h3>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card text-center shadow p-3">
+
+            <h5>💧 Humidity</h5>
+
+            <h3>{{ weather.humidity }}%</h3>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card text-center shadow p-3">
+
+            <h5>🌬 Wind</h5>
+
+            <h3>{{ weather.wind }} m/s</h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
 
         {% if history %}
 
