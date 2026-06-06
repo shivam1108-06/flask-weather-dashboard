@@ -44,6 +44,11 @@ def home():
                     "hot" if data["main"]["temp"] >= 30
                     else "warm" if data["main"]["temp"] >= 20
                     else "cold"
+                ),
+                "theme": (
+                    "hot" if data["main"]["temp"] >= 30
+                    else "warm" if data["main"]["temp"] >= 20
+                    else "cold"
                 )
             }
 
