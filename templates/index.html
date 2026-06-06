@@ -64,6 +64,9 @@
         .cold-bg{
             background: linear-gradient(to right,#74ebd5,#ACB6E5);
         }
+        .col h2{
+            font-size: 2rem;
+        }
     </style>
 
 </head>
@@ -362,6 +365,52 @@
                 Safe for outdoor activities
             </h6>
 
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% if weather %}
+
+<div class="card weather-card mt-4 p-4">
+
+    <h3 class="mb-4">
+        📅 5-Day Forecast
+    </h3>
+
+    <div class="row text-center">
+
+        <div class="col">
+            <h5>Mon</h5>
+            <h2>☀️</h2>
+            <p>32°C</p>
+        </div>
+
+        <div class="col">
+            <h5>Tue</h5>
+            <h2>⛅</h2>
+            <p>30°C</p>
+        </div>
+
+        <div class="col">
+            <h5>Wed</h5>
+            <h2>🌧️</h2>
+            <p>27°C</p>
+        </div>
+
+        <div class="col">
+            <h5>Thu</h5>
+            <h2>☁️</h2>
+            <p>29°C</p>
+        </div>
+
+        <div class="col">
+            <h5>Fri</h5>
+            <h2>☀️</h2>
+            <p>33°C</p>
         </div>
 
     </div>
